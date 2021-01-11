@@ -64,7 +64,7 @@ def reverse_CreateSecureString(string, length):
     # first byte is the XOR key
 	result = ""
 	for i in range(1, length + 1):
-		result += (hex(string[i] ^ string[0])[2:])
+		result += str.format('0x{:02X}',(string[i] ^ string[0]))[2:]
 	return result
 
 
@@ -74,7 +74,7 @@ def reverse_UpdateBuffer(string, length):
 	string_h = [int(string[i:i+2], 16) for i in range(0, len(string), 2)]
 	for i in range(length):
 		x = length + 2 - i % 2
-		result += (hex(string_h[i] ^ string_h[x])[2:])
+		result += str.format('0x{:02X}',(string_h[i] ^ string_h[x]))[2:]
 	return result
 
 
